@@ -1,0 +1,92 @@
+"use client"
+import React, { useState } from "react";
+import Link from "next/link";
+import { FaBars, FaTimes } from "react-icons/fa";
+
+const Navbar: React.FC = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  return (
+    <nav className="bg-background shadow-md sticky top-0 z-50">
+      <div className="container mx-auto px-4 flex justify-between items-center h-16">
+        {/* Logo */}
+        <Link href="/" className="flex items-center text-yellow-500 font-bold text-lg">
+          <span className="mr-2 text-2xl">EXPERTHUB</span>
+        </Link>
+
+        {/* Centered Links */}
+        <div className="hidden md:flex space-x-6 items-center mx-auto">
+          <Link href="/" className="hover:text-yellow-500">Home</Link>
+          <Link href="/my-business" className="hover:text-yellow-500">My Business</Link>
+          <Link href="/trainings" className="hover:text-yellow-500">Trainings</Link>
+          <Link href="/add-workspace" className="hover:text-yellow-500">Add Workspace</Link>
+        </div>
+
+        {/* Right Buttons */}
+        <div className="hidden md:flex space-x-4">
+          <Link href="/register" className="px-4 py-2 border border-black rounded hover:bg-gray-100">
+            Register
+          </Link>
+          <Link href="/login" className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">
+            Login
+          </Link>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-2xl text-gray-700"
+          onClick={toggleMobileMenu}
+          aria-label="Toggle mobile menu"
+        >
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-white shadow-md">
+          <ul className="flex flex-col justify-start space-y-4 py-4 px-4">
+            <li>
+              <Link href="/" onClick={toggleMobileMenu}>Home</Link>
+            </li>
+            <li>
+              <Link href="/my-business" onClick={toggleMobileMenu}>My Business</Link>
+            </li>
+            <li>
+              <Link href="/trainings" onClick={toggleMobileMenu}>Trainings</Link>
+            </li>
+            <li>
+              <Link href="/add-workspace" onClick={toggleMobileMenu}>Add Workspace</Link>
+            </li>
+            {/* Buttons in a flex row */}
+            <li className="flex justify-start space-x-4">
+              <Link
+                href="/register"
+                className="px-4 py-2 border border-black rounded hover:bg-gray-100"
+                onClick={toggleMobileMenu}
+              >
+                Register
+              </Link>
+              <Link
+                href="/login"
+                className="px-4 py-2 bg-primary text-white rounded hover:bg-secondary"
+                onClick={toggleMobileMenu}
+              >
+                Login
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
+
+
+
