@@ -5,7 +5,7 @@ const Hero: React.FC = () => {
     <div
       className="relative min-h-[120vh] bg-cover bg-center flex flex-col justify-end items-center"
       style={{
-        backgroundImage: "url('/images/hero-bg.png')", 
+        backgroundImage: "url('/images/hero-bg2.png')", 
       }}
     >
      
