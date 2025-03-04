@@ -1,6 +1,5 @@
 "use client"
 
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,7 +9,7 @@ import { usePathname, useRouter } from 'next/navigation';
 
 const HeaderNav = () => {
   const [open, setOpen] = useState(false)
-  const user = useAppSelector((state) => state.value);
+
   const router = useRouter()
   const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,15 +17,7 @@ const HeaderNav = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  // useEffect(() => {
-  //   if (user.role === "student" && !pathname.includes('applicant')) {
-  //     router.push('/applicant')
-  //   } else if (user.role === "admin" && !pathname.includes('admin')) {
-  //     router.push("/admin")
-  //   } else if (user.role === "tutor" && !pathname.includes('tutor')) {
-  //     router.push('/tutor')
-  //   }
-  // }, [])
+
   return (
     <nav className="bg-background shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 flex justify-between items-center h-16">
@@ -37,7 +28,7 @@ const HeaderNav = () => {
             href="/"
             className="flex items-center text-primary font-bold font-sans text-lg"
           >
-            <span className="mr-2 text-2xl">EXPERTHUB</span>
+            <span className="mr-2 text-2xl">EXPERTHUB- Workspace</span>
           </Link>
         </div>
 
@@ -50,7 +41,7 @@ const HeaderNav = () => {
             My Business
           </Link>
           <Link href="/trainings" className="hover:text-yellow-500">
-            Trainings
+            Workspaces
           </Link>
           <Link href="/add-workspace" className="hover:text-yellow-500">
             Add Workspace
@@ -99,7 +90,7 @@ const HeaderNav = () => {
             </li>
             <li>
               <Link href="/trainings" onClick={toggleMobileMenu}>
-                Trainings
+                Workspaces
               </Link>
             </li>
             <li>
